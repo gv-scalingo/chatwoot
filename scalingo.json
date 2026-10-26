@@ -1,0 +1,28 @@
+{
+  "stack": "scalingo-26",
+  "env": {
+    "SECRET_KEY_BASE": {
+      "generator": "secret"
+    },
+    "FRONTEND_URL": {
+      "generator": "url"
+    },
+    "PNPM_SKIP_PRUNING": {
+      "value": "true"
+    }
+  },
+  "addons": [
+    {
+      "plan": "postgresql:postgresql-starter-512",
+      "options": { "version": "17" }
+    },
+    { "plan": "redis:redis-starter-256" }
+  ],
+  "scripts": {
+    "first-deploy": "POSTGRES_STATEMENT_TIMEOUT=600s bundle exec rails db:chatwoot_prepare"
+  },
+  "formation": {
+    "web": { "amount": 1, "size": "XL" },
+    "worker": { "amount": 1, "size": "XL" }
+  }
+}
