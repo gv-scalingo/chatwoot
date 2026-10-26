@@ -9,6 +9,9 @@
     },
     "PNPM_SKIP_PRUNING": {
       "value": "true"
+    },
+    "NODE_OPTIONS": {
+      "value": "--max-old-space-size=4096"
     }
   },
   "addons": [
